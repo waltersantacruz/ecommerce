@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-
-import { Products, Navbar } from './components'
+import { Products, Navbar, Cart } from './components'
 const App = () => {
     const [productos, setProductos] = useState([]);
     const [cartItems, setCartItems] = useState([]);
@@ -21,10 +20,14 @@ const App = () => {
     },[])
 
     console.log(cartItems)
+
     return (
         <div>
-            <Navbar />
-            {productos ? <Products products = {productos} onAddToCart={onAddToCart}/> : console.log("no hay nada")}
+            <Navbar cartItems={cartItems.length}/>
+            {/*<Products products = {productos} onAddToCart={onAddToCart}/>*/}
+           <Products products = {productos} onAddToCart={onAddToCart}/>
+            {/*<Cart cartItems={cartItems}/> */}  
+            <Cart cartItems={cartItems}/>
         </div>
     )
 }
