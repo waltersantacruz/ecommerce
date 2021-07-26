@@ -13,13 +13,13 @@ const Navbar = () => {
                <Toolbar>
                    <Typography variant="h6" className={classes.title} color="inherit">
                     <img src={logo} alt="Commerce.js" height="50px" className={classes.image}/>
-                    Commerce.js
+                    Ecommerce
                    </Typography>
                    <div className={classes.grow} />
                    <div className={classes.button}>
                        <IconButton aria-label="Show car items" color="inherit">
                            <Badge badgeContent={2} color="secondary">
-                            <ShoppingCart/>
+                                <ShoppingCart/>
                            </Badge>
                        </IconButton>
                    </div>

@@ -5,6 +5,7 @@ export default makeStyles(() => ({
     maxWidth: 345,
   },
   media: {
-    height: 140,
-  },
+    paddingTop: '56.25%', // 16:9,
+    marginTop:'30'
+  }
 }));
