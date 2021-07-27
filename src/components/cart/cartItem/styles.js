@@ -16,7 +16,7 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
   },
   removeButton: {
-    minWidth: '150px',
+    minWidth: '80px',
     [theme.breakpoints.down('xs')]: {
       marginBottom: '5px',
     },

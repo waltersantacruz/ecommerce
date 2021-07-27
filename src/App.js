@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
 import { Products, Navbar, Cart } from './components'
+import useStyles from './styles'
+
+
+
 const App = () => {
+    const classes = useStyles()
     const [productos, setProductos] = useState([]);
     const [cartItems, setCartItems] = useState([]);
 
@@ -12,7 +17,7 @@ const App = () => {
         setProductos(prods) 
     } 
 
-    const onAddToCart = (producto,quantity) => {
+    const onAddToCart = (producto) => {
         setCartItems([...cartItems, producto])
     }
     useEffect(() =>{
@@ -23,11 +28,12 @@ const App = () => {
 
     return (
         <div>
-            <Navbar cartItems={cartItems.length}/>
-            {/*<Products products = {productos} onAddToCart={onAddToCart}/>*/}
-           <Products products = {productos} onAddToCart={onAddToCart}/>
-            {/*<Cart cartItems={cartItems}/> */}  
-            <Cart cartItems={cartItems}/>
+            <Navbar cartItems={cartItems.length}/>      
+            <Products products = {productos} onAddToCart={onAddToCart}/>
+            <div id="cart">
+                <Cart cartItems={cartItems}/>    
+            </div>
+                            
         </div>
     )
 }
