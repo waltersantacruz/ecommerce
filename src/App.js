@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { Products, Navbar, Cart } from './components'
 import useStyles from './styles'
 
-
-
 const App = () => {
     const classes = useStyles()
     const [productos, setProductos] = useState([]);
@@ -18,8 +16,21 @@ const App = () => {
     } 
 
     const onAddToCart = (producto) => {
+        let len = cartItems.length
+        cartItems.length === 0 ? producto.index = 0 : producto.index = cartItems[len-1].index+1 
+        console.log(producto.index)
         setCartItems([...cartItems, producto])
     }
+
+    const emptyCart = () => {
+        setCartItems([])
+    }
+
+    const removeFromCart = (index) => {
+        const newCart = cartItems.filter((item) => item.index !== index)
+        setCartItems(newCart);
+    }
+
     useEffect(() =>{
         fetchProducts();
     },[])
@@ -28,18 +39,17 @@ const App = () => {
 
     return (
         <div>
-            <Navbar cartItems={cartItems.length}/>      
-            <Products products = {productos} onAddToCart={onAddToCart}/>
-            <div id="cart">
-                <Cart cartItems={cartItems}/>    
-            </div>
-                            
+            <Navbar cartItems={cartItems.length}/>
+            <div id="products">
+                <Products products = {productos} onAddToCart={onAddToCart}/>
+            </div>      
+
+            <div id="cart" className={classes.cart}>
+                <Cart cartItems={cartItems} emptyCart={emptyCart} removeFromCart={removeFromCart}/>    
+            </div>                
         </div>
     )
 }
-
-    
-    
 
 
 export default App

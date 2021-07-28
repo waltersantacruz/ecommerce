@@ -12,20 +12,27 @@ const Navbar = ({cartItems}) => {
         <>
            <AppBar position= "fixed" className={classes.appBar} color="inherit">
                <Toolbar>
-                   <Typography variant="h6" className={classes.title} color="inherit">
-                    <img src={logo} alt="ecommerce" height="50px" className={classes.image}/>
-                    Ecommerce
-                   </Typography>
+                    <Link activeClass="active" to="products" spy={true} smooth={true}>
+                        <Typography variant="h6" className={classes.title} color="inherit">
+                            <img src={logo} alt="ecommerce" height="50px" className={classes.image}/>
+                                Ecommerce
+                        </Typography>
+                    </Link>
+
                    <div className={classes.grow} />
+
                    <div className={classes.button}>
+                    <Link activeClass="active" to="cart" spy={true} smooth={true}>
                        <IconButton aria-label="Show car items" color="inherit">
-                           <Link activeClass="active" to="cart" spy={true} smooth={true}>
+                           
                             <Badge badgeContent={cartItems} color="secondary">
                                     <ShoppingCart/>
                                 </Badge>
-                            </Link>
+                            
                        </IconButton>
+                    </Link>
                    </div>
+
                </Toolbar>
             </AppBar>
         </>

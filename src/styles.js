@@ -11,12 +11,5 @@ products: {
     height: 'auto',
 },
 cart: {
-    paddingTop: '10px',
-    paddingLeft: '10px',
-    marginLeft: '10px',
-    position: 'relative',
-    float: 'left',
-    width: '25%',
-    border: 'red solid 1px',
-    height: 'auto',
+    background: '#C4DEF6'
 }}));

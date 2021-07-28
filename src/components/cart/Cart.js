@@ -4,7 +4,7 @@ import useStyles from './styles.js'
 
 import CartItem from './cartItem/CartItem.jsx'
 
-const Cart = ({ cartItems }) => {
+const Cart = ({ cartItems, removeFromCart, emptyCart}) => {
     const classes = useStyles();
     const EmptyCart = () => (
         <Typography variant="overline"> You have no items in the cart</Typography>
@@ -20,14 +20,6 @@ const Cart = ({ cartItems }) => {
         <h1>{cuenta}</h1>
         )   
     };
-
-    const inCart = (cartItems, id) => {
-        const exists = false
-        cartItems.map((item)=>(
-            item.id === id ? exists = true : exists
-        ))    
-        return exists
-    }
 
     //cuenta la cantidad de items del carrito
     const cantidadItem = (cartItems, id) => {
@@ -45,17 +37,18 @@ const Cart = ({ cartItems }) => {
                 {cartItems.map((item, idx) => (
                     <Grid item xs={12} sm={6} md={4} lg={3} key={idx}>
                         <div>
-                            <CartItem item={item} qnty={cantidadItem(cartItems, item.id)}/>
+                            <CartItem item={item} qnty={cantidadItem(cartItems, item.id)} removeFromCart={removeFromCart}/>
+                            
                         </div>
                     </Grid>
                 ))}
             </Grid>
             <div className ={classes.cardDetails}>
-                <Typography variant="h4">
+                <Typography variant="overline">
                     Subtotal: {calcularSubtotal(cartItems)}
                 </Typography>
                     <div>
-                       <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary">Empty Cart</Button> 
+                       <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={() => emptyCart()}>Empty Cart</Button> 
                        <Button className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">Checkout</Button> 
                     </div>
             </div>
