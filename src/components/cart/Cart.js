@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CartContext } from '../context/carritoContext.jsx'
 import { Container, Typography, Button, Grid } from '@material-ui/core'
 import useStyles from './styles.js'
 
 import CartItem from './cartItem/CartItem.jsx'
 
-const Cart = ({ cartItems, removeFromCart, emptyCart}) => {
+const Cart = () => {
     const classes = useStyles();
+    const {cartItems, emptyCart} = useContext(CartContext)
+
+
     const EmptyCart = () => (
-        <Typography variant="overline"> You have no items in the cart</Typography>
-        
+        <Typography variant="overline"> You have no items in the cart</Typography>    
     );
 
     const calcularSubtotal = (cartItems) => {
@@ -16,6 +19,8 @@ const Cart = ({ cartItems, removeFromCart, emptyCart}) => {
         cartItems.map((item)=>(
             cuenta = cuenta + item.price
         ))
+        cuenta = cuenta.toFixed(2)
+
         return(
         <h1>{cuenta}</h1>
         )   
@@ -37,15 +42,15 @@ const Cart = ({ cartItems, removeFromCart, emptyCart}) => {
                 {cartItems.map((item, idx) => (
                     <Grid item xs={12} sm={6} md={4} lg={3} key={idx}>
                         <div>
-                            <CartItem item={item} qnty={cantidadItem(cartItems, item.id)} removeFromCart={removeFromCart}/>
+                            <CartItem item={item} qnty={cantidadItem(cartItems, item.id)}/>
                             
                         </div>
                     </Grid>
                 ))}
             </Grid>
             <div className ={classes.cardDetails}>
-                <Typography variant="overline">
-                    Subtotal: {calcularSubtotal(cartItems)}
+                <Typography variant="button" >
+                    Subtotal: <h1>{calcularSubtotal(cartItems)}</h1>
                 </Typography>
                     <div>
                        <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={() => emptyCart()}>Empty Cart</Button> 

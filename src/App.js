@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react'
-
-import { Products, Navbar, Cart } from './components'
-import useStyles from './styles'
+import { Products, Navbar, Cart, CartContextProvider } from './components'
 
 const App = () => {
-    const classes = useStyles()
-    const [productos, setProductos] = useState([]);
-    const [cartItems, setCartItems] = useState([]);
 
+    const [productos, setProductos] = useState([]);
 
     const fetchProducts = async () => {
         const data = await fetch('https://fakestoreapi.com/products')
@@ -15,39 +11,16 @@ const App = () => {
         setProductos(prods) 
     } 
 
-    const onAddToCart = (producto) => {
-        let len = cartItems.length
-        cartItems.length === 0 ? producto.index = 0 : producto.index = cartItems[len-1].index+1 
-        console.log(producto.index)
-        setCartItems([...cartItems, producto])
-    }
-
-    const emptyCart = () => {
-        setCartItems([])
-    }
-
-    const removeFromCart = (index) => {
-        const newCart = cartItems.filter((item) => item.index !== index)
-        setCartItems(newCart);
-    }
-
     useEffect(() =>{
         fetchProducts();
     },[])
 
-    console.log(cartItems)
-
     return (
-        <div>
-            <Navbar cartItems={cartItems.length}/>
-            <div id="products">
-                <Products products = {productos} onAddToCart={onAddToCart}/>
-            </div>      
-
-            <div id="cart" className={classes.cart}>
-                <Cart cartItems={cartItems} emptyCart={emptyCart} removeFromCart={removeFromCart}/>    
-            </div>                
-        </div>
+        <CartContextProvider>
+            <Navbar />
+            <div id="products"> <Products products={productos}/> </div>
+            <div id="cart" > <Cart />  </div> 
+        </CartContextProvider>
     )
 }
 

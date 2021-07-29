@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CartContext } from '../../context/carritoContext';
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, CardActionArea } from '@material-ui/core'
 import { AddShoppingCart } from '@material-ui/icons'
 
 import useStyles from './styles';
 
-const Product = ( { product, onAddToCart} ) => {
+const Product = ( { product } ) => {
     const classes = useStyles();
+    const { onAddToCart } = useContext(CartContext)
     
     return (
         <Card className={classes.root}>
