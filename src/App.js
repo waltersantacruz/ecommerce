@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { Products, Navbar, Cart } from './components'
+import { Products, Navbar, Cart, Checkout } from './components'
 import useStyles from './styles'
 
 const App = () => {
@@ -43,10 +43,12 @@ const App = () => {
             <div id="products">
                 <Products products = {productos} onAddToCart={onAddToCart}/>
             </div>      
-
-            <div id="cart" className={classes.cart}>
+            <div id="cart">
                 <Cart cartItems={cartItems} emptyCart={emptyCart} removeFromCart={removeFromCart}/>    
-            </div>                
+            </div>
+            <div id="checkout">
+                <Checkout/>    
+            </div>              
         </div>
     )
 }
