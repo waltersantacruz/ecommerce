@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
 import { Products, Navbar, Cart, Checkout } from './components'
-import useStyles from './styles'
 
 const App = () => {
-    const classes = useStyles()
+    
     const [productos, setProductos] = useState([]);
     const [cartItems, setCartItems] = useState([]);
 

@@ -14,9 +14,6 @@ const CartItem = ({ item, removeFromCart , qnty}) => {
             </CardContent>
             <CardActions className={classes.CardActions}>
                 <div className={classes.buttons}>
-                    <Button type="button" size="small" >-</Button>
-                        <Typography>&nbsp;{qnty}&nbsp;</Typography>
-                    <Button type="button" size="small" >+</Button>
                     <Button className={classes.removeButton} variant="contained" color="secondary" type="button" onClick={() => removeFromCart(item.index)}>Remove</Button>
                 </div> 
             </CardActions>

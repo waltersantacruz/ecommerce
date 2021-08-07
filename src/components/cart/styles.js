@@ -21,8 +21,9 @@ export default makeStyles((theme) => ({
     textDecoration: 'none',
   },
   cardDetails: {
+
     display: 'flex',
-    marginTop: '10%',
+    marginTop: '2%',
     width: '100%',
     justifyContent: 'space-between',
   },
@@ -30,5 +31,11 @@ export default makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(2),
+  },
+  subtotal:{
+    fontSize:  30
+  },
+  buttons:{
+    marginTop:130
   }
 }));

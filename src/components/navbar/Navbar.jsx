@@ -15,7 +15,7 @@ const Navbar = ({cartItems}) => {
                     <Link activeClass="active" to="products" spy={true} smooth={true}>
                         <Typography variant="h6" className={classes.title} color="inherit">
                             <img src={logo} alt="ecommerce" height="50px" className={classes.image}/>
-                                Ecommerce
+                                Ecommerce Practice
                         </Typography>
                     </Link>
 
