@@ -8,12 +8,13 @@ export default makeStyles((theme) => ({
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
+      marginLeft: drawerWidth, 
     },
   },
   title: {
+    fontFamily:'Comfortaa, cursive',
     cursor:'pointer',
-    width: '20%',
+    width: '100%',
     flexGrow: 1,
     alignItems: 'center',
     display: 'flex',
@@ -21,7 +22,8 @@ export default makeStyles((theme) => ({
   },
   image: {
     marginRight: '10px',
-    height:'70px'
+    height:'60px',
+    padding: '20px'
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -67,5 +69,5 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       width: '20ch',
     },
-  },
+  }
 }));

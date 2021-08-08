@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { Products, Navbar, Cart, Checkout } from './components'
+import { Products, Navbar, Cart} from './components'
 
 const App = () => {
     
@@ -44,10 +44,7 @@ const App = () => {
             </div>      
             <div id="cart">
                 <Cart cartItems={cartItems} emptyCart={emptyCart} removeFromCart={removeFromCart}/>    
-            </div>
-            <div id="checkout">
-                <Checkout/>    
-            </div>              
+            </div>            
         </div>
     )
 }

@@ -4,6 +4,7 @@ export default makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   title: {
     marginTop: '5%',
+    fontFamily: 'Comfortaa, cursive'
   },
   emptyButton: {
     minWidth: '150px',
@@ -32,6 +33,30 @@ export default makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(2),
   },
+  keepBuying:{
+    fontFamily: 'Comfortaa, cursive',
+  },
+  buttonStartBuying:{
+    transition: 'all .5s ease',
+    backgroundColor:'transparent',
+    fontFamily: 'Comfortaa, cursive',
+    border: '3px solid black',
+    '&:hover': {
+      backgroundColor: 'Black',
+      color: 'white'
+    },
+    height: '60px',
+    width: '220px',
+    margin: '20px'
+  },
+  emptyContent:{
+    backgroundColor: theme.palette.background.default,
+    display: 'flex',
+    alignItems : 'center',
+    flexDirection : 'column',
+    justifyContent : 'center'
+  },
+
   subtotal:{
     fontSize:  30
   },

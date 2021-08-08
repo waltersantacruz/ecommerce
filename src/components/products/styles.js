@@ -4,9 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   content: {
+    marginTop: '5%',
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(2),
+    padding: theme.spacing(4),
   },
   root: {
     flexGrow: 1,
@@ -14,8 +14,5 @@ export default makeStyles((theme) => ({
   item:{
       padding: 1,
       maxHeight: 1
-  },
-  toolbar: {
-    marginTop:0,
   },
 }));
