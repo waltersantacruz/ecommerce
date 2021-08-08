@@ -4,7 +4,7 @@ import useStyles from './styles.js'
 import { Link } from 'react-scroll'
 import './styles.css'
 
-import CartItem from './CartItem/CartItem.jsx'
+import CartItem from './cartItem/CartItem.jsx'
 
 const Cart = ({ cartItems, removeFromCart, emptyCart}) => {
     const classes = useStyles();
