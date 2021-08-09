@@ -6,13 +6,11 @@ import useStyles from './styles';
 
 const Product = ( { product, onAddToCart} ) => {
     const classes = useStyles();
-    const [isClicked, setIsClicked] = useState(false)
-
-    const handleOnClick = () => setIsClicked(!isClicked)
+    const [onHover, setOnHover] = useState(false)
 
     return (
-        <Card className={isClicked ? classes.rootClicked : classes.root} onClick={handleOnClick} elevation={5}>
-            {isClicked 
+        <Card className={onHover ? classes.rootClicked : classes.root} onMouseEnter={() => setOnHover(true)} onMouseLeave={() => setOnHover(false)} elevation={5}>
+            {onHover 
             ? 
             //carta cuando se hizo clic
             <CardActionArea className={classes.actionAreaClicked}>
@@ -26,9 +24,7 @@ const Product = ( { product, onAddToCart} ) => {
                             {product.title}
                         </Typography>
 
-                        <Typography className={classes.price}>
-                            ${product.price}
-                        </Typography> 
+                         
                 </CardContent>
             </CardActionArea>
 
@@ -43,11 +39,19 @@ const Product = ( { product, onAddToCart} ) => {
 
             {/*boton add to cart*/}
             <CardActions className={classes.botonHolder} >
-                {isClicked && 
+                {onHover && 
+                <div>
                 <IconButton className={classes.boton} aria-label="Add to Cart" onClick={() => onAddToCart(product)}>
                     <AddShoppingCart />
-                    Add to Cart    
-                </IconButton> }  
+                    Add   
+                </IconButton>
+
+                <Typography className={classes.price}>
+                            ${product.price}
+                </Typography>
+                </div>
+                
+                 }  
             </CardActions> 
         </Card>
     )

@@ -21,21 +21,21 @@ export default makeStyles((theme) => ({
   link: {
     textDecoration: 'none',
   },
-  cardDetails: {
 
-    display: 'flex',
-    marginTop: '2%',
-    width: '100%',
-    justifyContent: 'space-between',
-  },
   content:{
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(2),
   },
+
   keepBuying:{
+    transition: 'all 1s ease',
     fontFamily: 'Comfortaa, cursive',
+    '&:hover': {
+      fontSize: '20px',
+    },
   },
+
   buttonStartBuying:{
     transition: 'all .5s ease',
     backgroundColor:'transparent',
@@ -49,6 +49,8 @@ export default makeStyles((theme) => ({
     width: '220px',
     margin: '20px'
   },
+
+
   emptyContent:{
     backgroundColor: theme.palette.background.default,
     display: 'flex',
@@ -57,10 +59,69 @@ export default makeStyles((theme) => ({
     justifyContent : 'center'
   },
 
-  subtotal:{
-    fontSize:  30
+  cardDetailsMobile: {
+    height: '100%',
+    marginTop: '2%',
+    width: '100%',
+    justifyContent: 'space-between',
   },
+
+  cardDetails: {
+    marginTop: '2%',
+    width: '100%',
+    display: 'flex',
+    alignItems : 'left',
+    flexDirection : 'row',
+    justifyContent : 'left'
+  },
+
+  subtotal:{
+    fontSize:40,
+    background:'transparent',
+    marginRight:'20px'
+  },
+
+  //container
+  subtotalContainer:{
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+
+  subtotalContainerMobile:{
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+
+  //subtotal
+  subtotalMobile:{
+    width: '50%',
+    marginTop:'10px',
+    fontSize: 30,
+  },
+
+  total:{
+    fontSize: 25,
+    fontFamily: 'Arial',
+    marginTop: '-10px'
+  },
+
+  totalMobile:{
+    fontSize: 20,
+    fontFamily: 'Arial'
+  },
+
+  //botones
   buttons:{
-    marginTop:130
+    marginTop:'30px',
+    marginLeft: '30%'
+  },
+  
+  buttonsMobile:{
+    marginTop:'10px',
+    display: 'flex',
+    alignItems : 'center',
+    flexDirection : 'row',
+    justifyContent : 'center'
   }
+  
 }));

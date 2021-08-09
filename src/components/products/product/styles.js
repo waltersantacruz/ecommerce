@@ -2,27 +2,28 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(() => ({
   root: {
-    maxWidth: 345,
-    height: 500,
+    height: 485,
+    width:'100%',
     display: 'flex',
     flexFlow: 'column',
-    marginRight: 10
   },
 
   rootClicked: {
-    maxWidth: 345,
     height:'100%',
-    maxHeight: 500,
+    maxHeight: 485,
+  },
+
+  actionAreaClicked:{
+    height: 400
   },
 
   mediaClicked: {
-    paddingTop: '56.25%',
+    height: 350,
     width: '100%', // 16:9
-    marginTop:'30'
   },
 
   mediaNotClicked: {
-    height: 450,
+    height: 400,
     paddingTop: '56.25%',
     width: '100%', // 16:9
     marginTop:'30'
@@ -30,23 +31,31 @@ export default makeStyles(() => ({
 
   cardContent:{
     fontSize:20,
-    padding:20,
+    paddingTop:10,
+    paddingLeft: 20,
     flexGrow: 1,
     marginBottom: 0,
   },
+
   title:{
     fontSize:20,
+    maxHeight: '10px'
   },
+
   price:{
     fontSize: 30,
+    position:'absolute',
+    bottom:20,
+    right:20,
   },
+
   boton:{
-    margin:10
+    margin:10,
+    background:'transparent'
   },
   botonHolder:{
-    marginTop: 0
-  }
-  
-
-  
+    position: 'relative',
+    marginTop: 0,
+    background:'white'
+  } 
 }));

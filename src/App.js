@@ -17,7 +17,6 @@ const App = () => {
     const onAddToCart = (producto) => {
         let len = cartItems.length
         cartItems.length === 0 ? producto.index = 0 : producto.index = cartItems[len-1].index+1 
-        console.log(producto.index)
         setCartItems([...cartItems, producto])
     }
 
@@ -34,13 +33,12 @@ const App = () => {
         fetchProducts();
     },[])
 
-    console.log(cartItems)
 
     return (
         <div>
             <Navbar cartItems={cartItems.length}/>
             <div id="products">
-                <Products products = {productos} onAddToCart={onAddToCart}/>
+                <Products products={productos} onAddToCart={onAddToCart}/>
             </div>      
             <div id="cart">
                 <Cart cartItems={cartItems} emptyCart={emptyCart} removeFromCart={removeFromCart}/>    

@@ -15,4 +15,7 @@ export default makeStyles((theme) => ({
       padding: 1,
       maxHeight: 1
   },
+  grid:{
+    height:'100%',
+  },
 }));

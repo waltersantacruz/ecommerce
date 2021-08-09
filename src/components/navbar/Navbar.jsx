@@ -22,60 +22,40 @@ const Navbar = ({cartItems}) => {
         }     
     },[])
 
-    const DisplayDesktop = () => (
-        <AppBar position="fixed" className={classes.appBar} color="inherit">
-            <Toolbar>
-                    <Link activeClass="active" to="products" spy={true} smooth={true}>
-                        <Typography variant="h3" className={classes.title} color="inherit">
-                            <img src={logo} alt="ecommerce" className={classes.image}/>
-                                Ecommerce Practice
-                        </Typography>
-                    </Link>
-
-                    <div className={classes.grow} />
-
-                    <div className={classes.button}>
-                        <Link activeClass="active" to="cart" spy={true} smooth={true}>
-                        <IconButton aria-label="Show car items" color="inherit">
-                            
-                                <Badge badgeContent={cartItems} color="secondary" >
-                                        <ShoppingCart/>
-                                </Badge>
-                                
-                        </IconButton>
-                        </Link>
-                    </div>
-            </Toolbar>
-        </AppBar>
-    );
-
-    const DisplayMobile = () => (
-        <AppBar position="fixed" className={classes.appBar} color="inherit">
-            <Toolbar>
-                    <Link activeClass="active" to="products" spy={true} smooth={true}>
-                        <Typography variant="h3" className={classes.title} color="inherit">
-                            <img src={logo} alt="ecommerce" className={classes.image}/>
-                        </Typography>
-                    </Link>
-                    <div className={classes.grow} />
-                    <div className={classes.button}>
-                        <Link activeClass="active" to="cart" spy={true} smooth={true}>
-                        <IconButton aria-label="Show car items" color="inherit">
-                            
-                                <Badge badgeContent={cartItems} color="secondary" >
-                                        <ShoppingCart/>
-                                </Badge>
-                                
-                        </IconButton>
-                        </Link>
-                    </div>
-            </Toolbar>
-        </AppBar>
-    );
-
     return (
         <>
-            {mobileView ? <DisplayMobile /> : <DisplayDesktop />}
+            <AppBar position="fixed" className={mobileView ? classes.appBarMobile : classes.appBar} color="inherit">
+            <Toolbar>
+                    <Link activeClass="active" to="products" spy={true} smooth={true}>
+                        
+                            {mobileView ? 
+                            <Typography variant="h3" className={classes.title} color="inherit">
+                                <img src={logo} alt="ecommerce" className={ classes.imageMobile }/>
+                            </Typography>
+                            :
+                            <Typography variant="h3" className={classes.title} color="inherit">
+                                <img src={logo} alt="ecommerce" className={ classes.image }/>
+                                Ecommerce Practice
+                            </Typography>
+                            }
+
+                    </Link>
+
+                    <div className={classes.grow} />
+
+                    <div className={classes.button}>
+                        <Link activeClass="active" to="cart" spy={true} smooth={true}>
+                        <IconButton aria-label="Show car items" color="inherit">
+                            
+                                <Badge badgeContent={cartItems} color="secondary" >
+                                        <ShoppingCart/>
+                                </Badge>
+                                
+                        </IconButton>
+                        </Link>
+                    </div>
+            </Toolbar>
+        </AppBar>
         </>
     )
 }

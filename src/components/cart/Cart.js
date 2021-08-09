@@ -1,20 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import { Container, Typography, Button, Grid } from '@material-ui/core'
 import useStyles from './styles.js'
 import { Link } from 'react-scroll'
-import './styles.css'
+
 
 import CartItem from './cartItem/CartItem.jsx'
 
 const Cart = ({ cartItems, removeFromCart, emptyCart}) => {
     const classes = useStyles();
+    const [mobileView, setMobileView] = useState(false)
+
+    useEffect(() => {
+        const setResponsiveness = () => {
+            return window.innerWidth < 900 ? setMobileView(true) : setMobileView(false)
+        }
+        setResponsiveness()
+
+        window.addEventListener("resize", () => setResponsiveness())
+
+        return () => {
+        window.removeEventListener("resize", () => setResponsiveness())
+        }     
+    },[])
     
     const calcularSubtotal = (cartItems) => {
         let cuenta = 0
         cartItems.map((item)=>(
             cuenta = cuenta + item.price
         ))
-        cuenta = cuenta.toFixed(2)
+        cuenta = '$' + cuenta.toFixed(2) 
         return(
         <h1>{cuenta}</h1>
         )   
@@ -53,22 +67,29 @@ const Cart = ({ cartItems, removeFromCart, emptyCart}) => {
                     </Grid>
                 ))}
             </Grid>
-            <div className ={classes.cardDetails}>
-                <Typography className={classes.subtotal}>
-                    Subtotal: {calcularSubtotal(cartItems)}
-                </Typography>
-                    <div className={classes.buttons}>
-                       <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={() => emptyCart()}>Empty Cart</Button> 
-                       <Link className='hvr-icon-wobble-vertical' activeClass="active" to="products" spy={true} smooth={true} >
-                            <Button className={classes.keepBuying}>
-                                Keep Buying
-                            </Button>
-                            <i className='fa fa-arrow-up hvr-icon'></i>   
-                        </Link>  
+            <div className ={mobileView ? classes.cardDetailsMobile : classes.cardDetails}>
+                <div className={mobileView ? classes.subtotalContainerMobile : classes.subtotalContainer}>
+                    <Typography variant='overline' className={mobileView ? classes.subtotalMobile : classes.subtotal}>
+                        Subtotal:
+                    </Typography>
+                    <div className={mobileView ? classes.totalMobile : classes.total}>
+                        {calcularSubtotal(cartItems)}
                     </div>
+                </div>
+
+                <div className={mobileView ? classes.buttonsMobile : classes.buttons}>
+                    <Button className={classes.emptyButton} size="medium" type="button" variant="contained" color="primary" onClick={() => emptyCart()}>Empty Cart</Button> 
+                    <Link activeClass="active" to="products" spy={true} smooth={true} >
+                        <Button className={classes.keepBuying}>
+                            Keep Buying
+                        </Button>
+                        <i className='fa fa-arrow-up hvr-icon'></i>   
+                    </Link>  
+                </div>
             </div>
         </div>
     );
+
 
 
     return (
